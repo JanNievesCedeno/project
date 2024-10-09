@@ -1,0 +1,9 @@
+{% extends "dashboard/nav.html" %}
+
+{% block main %}
+    <form action="/dashboard/adduser" method="post">
+        <input name="username" type="text" placeholder="Name">
+        <input name="password" type="password" placeholder="Password">
+        <button type="submit">Add User</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <hr class="top">
+    <h1 class="title">Projects</h1>
+    <hr class="bottom">
+    {% for row in projects %}
+        <section class="project">
+            <div>
+                <span>Name: </span>
+                <p>{{row[0]}}</p>
+            </div>
+
+            <div>
+                <span>Description: </span>
+                <p>{{row[1]}}</p>
+            </div>
+
+            <div>
+                <span>Languages: </span>
+                <p class="languages">{{row[2]}}</p>
+            </div>
+
+            <div>
+                <img class="img-fluid" src="{{row[3]}}" width="700px"  alt="" loading="lazy">
+                <video class="img-fluid object-fit-scale" src="{{row[4]}}"  width="700px" controls preload="auto"></video>
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}
