@@ -239,13 +239,14 @@ def update():
             img = request.files["img"]
             if not img.filename == '':
                 if image_path:
-                    os.remove(image_path)
+                    if os.path.exists(image_path):
+                        os.remove(image_path)
                 image_path = os.path.join("static/img", img.filename)
                 img.save(image_path)
         
             else:
-                if image_path:
-                    os.remove(image_path)
+                if os.path.exists(image_path):
+                        os.remove(image_path)
                 image_path = None
 
         # Request files for the video
@@ -253,13 +254,15 @@ def update():
             video = request.files["video"]
             if not video.filename == '':
                 if video_path:
-                    os.remove(video_path)
+                    if os.path.exists(video_path):
+                        os.remove(video_path)
                 video_path = os.path.join("static/video", video.filename)
                 video.save(video_path)       
         
             else:
                 if video_path:
-                    os.remove(video_path)
+                    if os.path.exists(video_path):
+                        os.remove(video_path)
                 video_path = None
 
         # Save in database
