@@ -1,3 +1,5 @@
+# Code from CS50 Finance Project
+
 from flask import redirect, session
 from functools import wraps
 

@@ -1,7 +1,7 @@
 {% extends "dashboard/dashboard.html" %}
 
 {% block main %}
-    <form action="/login" method="post">
+    <form class="text-center" action="/login" method="post">
         <input name="username" type="text" placeholder="Name" required autofocus>
         <input name="password" type="password" placeholder="Password" required>
         <button type="submit">Log In</button>

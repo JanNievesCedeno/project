@@ -1,35 +1,21 @@
 {% extends "dashboard/nav.html" %}
 
 {% block main %}
+    <hr>
     <h2>Update</h2>
-
-    <div></div>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Languages</th>
-                    <th>Image</th>
-                    <th>Video</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <form action="/dashboard/update" method="post" enctype="multipart/form-data">
-                        <td><input name="id" type="text" value="{{record[0][0]}}" readonly hidden></td>
-                        <td><input name="name" value="{{record[0][1]}}" type="text"></td>
-                        <td><input name="description" value="{{record[0][2]}}" type="text"></td>
-                        <td><input name="languages" value="{{record[0][3]}}" type="text"></td>
-                        <td><input name="img" type="file"></td>
-                        <td><input name="video" type="file"></td>
-                        <button type="submit">Update Project</button>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
+    <hr>
+    
+    <form action="/dashboard/update" method="post" enctype="multipart/form-data">
+        <div class="d-flex flex-column">
+            <input name="id" type="text" value="{{record[0][0]}}" readonly hidden>
+            <input name="name" value="{{record[0][1]}}" type="text">
+            <input name="description" value="{{record[0][2]}}" type="text">
+            <input name="languages" value="{{record[0][3]}}" type="text">
+            <input name="img" type="file">
+            <input name="video" type="file">
+            <button type="submit">Update Project</button>
+        </div>
+    </form>
         
     </div>
 {% endblock %}

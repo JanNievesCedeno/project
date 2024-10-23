@@ -28,16 +28,16 @@ db = database.cursor()
 @app.route("/")
 @cache.cached(timeout=60)
 def home():
-    user_id = 6
+    user_id = 7
     db.execute("SELECT name, description, languages, img, video FROM projects WHERE user_id = ?", (user_id,))
     projects = db.fetchall()
 
     return render_template("home.html", projects=projects)
 
 # Route for resume
-@app.route("/resume")
-def projects():
-    return render_template("resume.html")
+# @app.route("/resume")
+# def projects():
+#     return render_template("resume.html")
 
 # Route for aboutme
 @app.route("/aboutme", methods=["GET", "POST"])
@@ -119,7 +119,10 @@ def dashboard():
         db.execute("SELECT id, name, description, languages, img, video  FROM projects WHERE user_id = ?", (user_id,))
         project = db.fetchall()
 
-        return render_template("dashboard/records.html", project=project)
+        db.execute("SELECT * FROM contact")
+        contact = db.fetchall()
+
+        return render_template("dashboard/records.html", project=project, contact=contact)
 
 # Route for adduser (Login Required)
 @app.route("/dashboard/adduser", methods=["GET", "POST"])
@@ -179,7 +182,7 @@ def addproject():
                 img.save(image_path)
         
             else:
-                img = None
+                image_path = None
 
         # Request files for the video
         if 'video' in request.files:
@@ -189,7 +192,7 @@ def addproject():
                 video.save(video_path)       
         
             else:
-                video = None
+                video_path = None
 
         # Save in database
         db.execute("INSERT INTO projects (name, description, languages, img, video, user_id) VALUES (?, ?, ?, ?, ?, ?)", (name, description, languages, image_path, video_path, user_id,))

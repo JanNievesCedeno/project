@@ -1,9 +1,16 @@
 {% extends "dashboard/nav.html" %}
 
 {% block main %}
-    <form action="/dashboard/adduser" method="post">
-        <input name="username" type="text" placeholder="Name">
-        <input name="password" type="password" placeholder="Password">
-        <button type="submit">Add User</button>
+
+    <hr>
+    <h2>Add User</h2>
+    <hr>
+
+    <form class="d-flex justify-content-center" action="/dashboard/adduser" method="post">
+        <div class="w-75 d-flex flex-column ">
+            <input class="text-center" name="username" type="text" placeholder="Name">
+            <input class="text-center" name="password" type="password" placeholder="Password">
+            <button class="text-center" type="submit">Add User</button>
+        </div>
     </form>
 {% endblock %}
