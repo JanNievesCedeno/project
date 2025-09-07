@@ -7,7 +7,11 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import login_required
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder=os.path.join(os.path.dirname(os.path.dirname(__file__)), "templates"),
+    static_folder=os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
+)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # Configure session to use filesystem (instead of signed cookies)
